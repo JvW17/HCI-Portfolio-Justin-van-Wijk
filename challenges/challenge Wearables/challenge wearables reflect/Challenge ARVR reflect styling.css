@@ -43,6 +43,10 @@
   	margin: 0;
 	}
 
+	p{
+		font-size: 17px;
+	}
+
 	a:link{
 		font-family: poppins, sans-serif;
   	font-weight: 400;
@@ -61,13 +65,11 @@
 		text-decoration: underline;
 	}
 
-	.geenStylingLinkje{
-		text-decoration: none;
+	.websiteLinkje{
 		color: black;
 	}
 
-	.geenStylingLinkje:hover{
-		text-decoration: none;
+	.websiteLinkje:visited{
 		color: black;
 	}
 
@@ -96,19 +98,19 @@
   }
 
 /* box styling */
-  .box2, .box3, .box4, .box5{
+  .box2, .box3, .box4{
     padding: 20px;
-    border-radius: 25px;
   }
 
-	.boxblauw:hover{
-		background-color: #bac7ff;
+	.box2, .box4{
+		border-right: 6px solid #3C5DFB;
+		border-radius: 0px;
 	}
 
-  .titelbox{
-    /* padding-left: 20px; */
-    /* margin-top: 3%; */
-  }
+	.box3{
+		border-left: 6px solid #3C5DFB;
+		border-radius: 0px;
+	}
 
   .box10{
     padding: 10px;
@@ -129,6 +131,12 @@
   .witteTekstKleur{
     color: white;
   }
+
+	/* Afbeeldingen */
+	#researchAfbeeldingVerkleinen{
+		height: auto;
+		width: 330px;
+	}
 
 
 

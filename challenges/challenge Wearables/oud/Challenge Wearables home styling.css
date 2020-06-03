@@ -61,16 +61,6 @@
 		text-decoration: underline;
 	}
 
-	.geenStylingLinkje{
-		text-decoration: none;
-		color: black;
-	}
-
-	.geenStylingLinkje:hover{
-		text-decoration: none;
-		color: black;
-	}
-
 	#aangepasteTweedeKop{
 		font-family: poppins, sans-serif;
   	font-weight: 400;
