@@ -1,0 +1,170 @@
+// Eindopdracht Arduino - Justin van Wijk
+
+#include "LedControl.h"
+
+int pirPin = 12;
+int pirValue;
+int redLedPin = 10;
+int state = LOW;
+int val = 0;
+int yellowLedPin = 9;
+
+int speakerPin = 8;
+
+LedControl lc = LedControl(7,6,5,1);
+
+void setup() {
+  
+ pinMode(redLedPin, OUTPUT);
+ pinMode(yellowLedPin, OUTPUT);
+ pinMode(pirPin, INPUT);
+ digitalWrite(redLedPin, LOW);
+ Serial.begin(9600);
+
+ lc.shutdown(0,false);
+ lc.setIntensity(0,8);
+ lc.clearDisplay(0);
+
+ pinMode(speakerPin, OUTPUT);
+ 
+}
+
+void loop() {
+  val = digitalRead(pirPin);
+  if (val == HIGH){
+    digitalWrite(redLedPin, HIGH);
+    digitalWrite(yellowLedPin, LOW);
+    delay(100);
+
+    if(state == LOW){
+      Serial.println("Motion detected!");
+      state = HIGH;
+    }
+     
+      lc.setRow(0,0,B00111111);
+      lc.setRow(0,1,B01000000);
+      lc.setRow(0,2,B01000000);
+      lc.setRow(0,3,B01000111);
+      lc.setRow(0,4,B01000001);
+      lc.setRow(0,5,B01000001);
+      lc.setRow(0,6,B01000001);
+      lc.setRow(0,7,B00111110);
+      tone(speakerPin, 4000, 200);
+      delay(750);
+
+      lc.setRow(0,0,B00111100);
+      lc.setRow(0,1,B01000010);
+      lc.setRow(0,2,B01000010);
+      lc.setRow(0,3,B01111110);
+      lc.setRow(0,4,B01000010);
+      lc.setRow(0,5,B01000010);
+      lc.setRow(0,6,B01000010);
+      lc.setRow(0,7,B01000010);
+      tone(speakerPin, 2000, 200);
+      delay(750);
+    
+      lc.setRow(0,0,B01000010);
+      lc.setRow(0,1,B01100110);
+      lc.setRow(0,2,B01111110);
+      lc.setRow(0,3,B01100110);
+      lc.setRow(0,4,B00000000);
+      lc.setRow(0,5,B00111100);
+      lc.setRow(0,6,B01000010);
+      lc.setRow(0,7,B00000000);
+      tone(speakerPin, 2000, 200);
+      delay(750);
+      
+      lc.setRow(0,0,B10000001);
+      lc.setRow(0,1,B10000001);
+      lc.setRow(0,2,B10000001);
+      lc.setRow(0,3,B10000001);
+      lc.setRow(0,4,B10011001);
+      lc.setRow(0,5,B10100101);
+      lc.setRow(0,6,B11000011);
+      lc.setRow(0,7,B10000001);
+      tone(speakerPin, 2000, 200);
+      delay(750);
+
+      lc.setRow(0,0,B01111110);
+      lc.setRow(0,1,B01000000);
+      lc.setRow(0,2,B01000000);
+      lc.setRow(0,3,B01111000);
+      lc.setRow(0,4,B01000000);
+      lc.setRow(0,5,B01000000);
+      lc.setRow(0,6,B01000000);
+      lc.setRow(0,7,B01111110);
+      tone(speakerPin, 2000, 200);
+      delay(750);
+
+      lc.setRow(0,0,B00111111);
+      lc.setRow(0,1,B01000000);
+      lc.setRow(0,2,B01000000);
+      lc.setRow(0,3,B01000111);
+      lc.setRow(0,4,B01000001);
+      lc.setRow(0,5,B01000001);
+      lc.setRow(0,6,B01000001);
+      lc.setRow(0,7,B00111110);
+      tone(speakerPin, 2000, 200);
+      delay(750);
+
+      lc.setRow(0,0,B00011000);
+      lc.setRow(0,1,B00011000);
+      lc.setRow(0,2,B00011000);
+      lc.setRow(0,3,B00011000);
+      lc.setRow(0,4,B00011000);
+      lc.setRow(0,5,B00000000);
+      lc.setRow(0,6,B00011000);
+      lc.setRow(0,7,B00011000);
+      tone(speakerPin, 2000, 200);
+      delay(750);
+
+      lc.setRow(0,0,B01100110);
+      lc.setRow(0,1,B01100110);
+      lc.setRow(0,2,B01100110);
+      lc.setRow(0,3,B01100110);
+      lc.setRow(0,4,B01100110);
+      lc.setRow(0,5,B00000000);
+      lc.setRow(0,6,B01100110);
+      lc.setRow(0,7,B01100110);
+      tone(speakerPin, 2000, 200);
+      delay(750);
+
+      lc.setRow(0,0,B11011011);
+      lc.setRow(0,1,B11011011);
+      lc.setRow(0,2,B11011011);
+      lc.setRow(0,3,B11011011);
+      lc.setRow(0,4,B11011011);
+      lc.setRow(0,5,B00000000);
+      lc.setRow(0,6,B11011011);
+      lc.setRow(0,7,B11011011);
+      tone(speakerPin, 2000, 200);
+      delay(750);
+
+  }
+  
+  else{
+    digitalWrite(redLedPin, LOW);
+    delay(200);
+
+    digitalWrite(yellowLedPin, HIGH);
+    delay(1500);
+    digitalWrite(yellowLedPin, LOW);
+    delay(1500);
+
+    if (state == HIGH){
+      Serial.println("Motion stopped");
+      state = LOW;
+
+      lc.setRow(0,0,B00000000);
+      lc.setRow(0,1,B00000000);
+      lc.setRow(0,2,B00000000);
+      lc.setRow(0,3,B00000000);
+      lc.setRow(0,4,B00000000);
+      lc.setRow(0,5,B00000000);
+      lc.setRow(0,6,B00000000);
+      lc.setRow(0,7,B00000000);
+    }
+  
+  }
+   
+}

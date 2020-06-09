@@ -55,10 +55,27 @@
 	}
 
 	.box5{
-		grid-area: showcaseVideo;
+		grid-area: foto1;
 		display: flex;
 		flex-flow: column;
-    justify-content: flex-start;
+    justify-content: center;
+		align-items: center;
+	}
+
+	.box5b{
+		grid-area: schets1;
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.box5c{
+		grid-area: schets2;
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.box6{
@@ -112,7 +129,7 @@
 			"researchTitel researchTitel researchTitel"
 			"eindproduct eindproduct eindproductAfbeelding"
 			"showcaseTitel showcaseTitel showcaseTitel"
-			"showcaseVideo showcaseVideo showcaseVideo"
+			"foto1 schets1 schets2"
 			"showcaseBeschrijving showcaseBeschrijving showcaseBeschrijving"
 			"footer footer footer"
 

@@ -110,8 +110,9 @@
 		border-radius: 0px 25px 25px 0px;
 	}
 
-	.box5{
+	.box5b{
 		border-right: 6px solid #3C5DFB;
+		border-left: 6px solid #3C5DFB;
 	}
 
 	/* .box4{
@@ -146,6 +147,11 @@
 	#researchAfbeeldingVerkleinen{
 		height: auto;
 		width: 330px;
+	}
+
+	#researchAfbeeldingVerkleinen2{
+		height: auto;
+		width: 350px;
 	}
 
 	.afbeeldingAanpassen{
