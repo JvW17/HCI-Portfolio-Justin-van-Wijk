@@ -1,0 +1,63 @@
+// Tinkering demo 2 - Justin van Wijk
+
+#include <Servo.h>
+
+Servo myservo;
+
+float sensorValue = 0;
+int sensorPin = A0;
+int pos = 0;
+
+int redLedPin = 7;
+int greenLedPin = 6;
+int yellowLedPin = 5;
+
+void setup() {
+
+  myservo.attach(9);
+  pinMode(sensorPin, INPUT);
+
+  pinMode(greenLedPin, OUTPUT);
+  pinMode(yellowLedPin, OUTPUT);
+  pinMode(redLedPin, OUTPUT);
+  
+  Serial.begin(9600);
+ 
+}
+
+void loop() {
+  
+  sensorValue = analogRead(sensorPin);
+  sensorValue = (sensorValue/1023)*754;
+  sensorValue = map(sensorValue, 0, 1023, 0, 180);
+
+  Serial.println(sensorValue);
+
+  if(sensorValue<55){
+    for(pos = 0; pos <= 180; pos += 1){
+        myservo.write(pos);
+        delay(15);
+    }
+    digitalWrite(redLedPin, LOW);
+    digitalWrite(greenLedPin, HIGH);
+    digitalWrite(yellowLedPin, HIGH);
+    delay(500);
+    digitalWrite(redLedPin, LOW);
+    digitalWrite(greenLedPin, HIGH);
+    digitalWrite(yellowLedPin, LOW);
+    delay(500);
+  }
+
+  else{
+    for(pos = 0; pos >= 0; pos -= 1){
+      myservo.write(pos);
+      delay(15);
+    }
+    digitalWrite(redLedPin, HIGH);
+    digitalWrite(greenLedPin, LOW);
+    digitalWrite(yellowLedPin, LOW);
+  }
+  
+  delay(20);
+
+}

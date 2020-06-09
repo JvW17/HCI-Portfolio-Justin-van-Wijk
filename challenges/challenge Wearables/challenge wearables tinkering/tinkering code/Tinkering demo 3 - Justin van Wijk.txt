@@ -1,0 +1,59 @@
+// Tinkering demo 3 - Justin van Wijk
+
+#include "LedControl.h"
+
+LedControl lc = LedControl(12,11,10,1);
+const int echoPin = 6;
+const int trigPin = 7;
+
+void setup() {
+  pinMode(echoPin, INPUT);
+  pinMode(trigPin, OUTPUT);
+
+  lc.shutdown(0,false);
+  lc.setIntensity(0,8);
+  lc.clearDisplay(0);
+  
+  Serial.begin(9600);
+}
+
+void loop() {
+  // send a pulse
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(5);
+  digitalWrite(trigPin, LOW);
+  
+  // wait for the echo
+  long duration = pulseIn(echoPin, HIGH);
+  
+  int cm = duration / 29 / 2;
+  
+  Serial.print(cm);
+  Serial.println("cm");
+
+  if(cm<150){
+     lc.setRow(0,0,B00111100);
+     lc.setRow(0,1,B01000010);
+     lc.setRow(0,2,B10100101);
+     lc.setRow(0,3,B10000001);
+     lc.setRow(0,4,B10011001);
+     lc.setRow(0,5,B10100101);
+     lc.setRow(0,6,B01000010);
+     lc.setRow(0,7,B00111100);
+  }
+
+  else{
+     lc.setRow(0,0,B00111100);
+     lc.setRow(0,1,B01000010);
+     lc.setRow(0,2,B10100101);
+     lc.setRow(0,3,B10000001);
+     lc.setRow(0,4,B10100101);
+     lc.setRow(0,5,B10011001);
+     lc.setRow(0,6,B01000010);
+     lc.setRow(0,7,B00111100);
+  }
+  
+  delay(100);
+}

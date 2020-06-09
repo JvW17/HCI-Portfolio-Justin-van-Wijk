@@ -1,0 +1,30 @@
+// Tinkering demo 1 - Justin van Wijk
+
+import websockets.*;
+
+import tramontana.library.*;
+
+Tramontana telefoon;
+
+void setup(){
+  telefoon = new Tramontana(this,"192.168.1.16");
+}
+
+void draw(){
+
+}
+void keyPressed()
+{
+  if(key == 'a'){
+    telefoon.showImage("https://i.pinimg.com/originals/0e/af/f4/0eaff494fe3c2019cb6f66b8a3ddd523.jpg");
+    telefoon.pulseFlashLight(10, 0.2, 0.5);
+    telefoon.makeVibrate();
+  }
+  else if(key == 's'){
+     telefoon.showImage("https://i.pinimg.com/originals/a5/fa/7c/a5fa7c37fe829b362fb82821742d036a.jpg");
+     telefoon.setFlashLight(0.5);
+  }
+  else if(key == 'd'){
+     telefoon.setColor(random(1.0), random(1.0), random(1.0), 1.0);
+  }
+}
