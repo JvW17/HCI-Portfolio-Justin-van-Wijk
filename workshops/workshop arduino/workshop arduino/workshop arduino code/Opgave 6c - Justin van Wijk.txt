@@ -1,0 +1,30 @@
+// Opgave 6c - Justin van Wijk
+
+float sensorValue = 0; // variable for sensor value
+int sensorPin = A0; // variable for sensor pin
+
+int redLedPin = 10;
+int yellowLedPin = 9;
+
+void setup() {
+  
+  pinMode(redLedPin, OUTPUT);
+  pinMode(yellowLedPin, OUTPUT);
+  pinMode(sensorPin, INPUT);
+  Serial.begin(9600);
+ 
+}
+
+void loop() {
+  
+  sensorValue = analogRead(sensorPin);
+  sensorValue = (sensorValue/1023)*255;
+  
+  analogWrite(redLedPin, 255-sensorValue);
+  analogWrite(yellowLedPin, sensorValue);
+
+  Serial.println(sensorValue);
+  delay(20);
+ 
+}
+

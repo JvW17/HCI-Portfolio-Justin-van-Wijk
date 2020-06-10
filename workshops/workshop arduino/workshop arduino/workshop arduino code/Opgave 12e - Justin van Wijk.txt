@@ -1,0 +1,31 @@
+// Opgave 12e - Justin van Wijk
+
+import processing.serial.*;
+
+Serial myPort;
+String sensorReading="";
+float yaw;
+boolean isTurningMoreThan45 = false;
+
+void setup() {
+ size(400, 400);
+ myPort = new Serial(this, Serial.list()[2], 9600);
+ myPort.bufferUntil('\n');
+}
+
+void draw() {
+ background(255);
+ fill(128);
+ text("Sensor Reading: " + sensorReading, 20, 20);
+ 
+  translate(width/2, height/2);
+  rotate((float(sensorReading)/20));
+  triangle(0, -50, 50, 50, -50, 50);
+}
+
+void serialEvent (Serial myPort) {
+ sensorReading = myPort.readStringUntil('\n');
+}
+
+
+

@@ -1,0 +1,20 @@
+// Opgave 9b - Justin van Wijk
+
+int speakerPin = 8;
+
+void setup() {
+ pinMode(speakerPin, OUTPUT);
+}
+
+void loop() {
+
+ tone(speakerPin, 300, 200);
+ delay(250); // wait 250 ms
+ tone(speakerPin, 100, 200);
+ delay(250); // wait 250 ms
+ tone(speakerPin, 300, 200);
+ delay(250); // wait 250 ms
+ tone(speakerPin, 200, 200);
+ delay(500);
+
+}

@@ -1,0 +1,115 @@
+// Opgave 7c - Justin van Wijk
+
+#include "LedControl.h"
+
+LedControl lc = LedControl(12,11,10,1);
+
+void setup() {
+
+  lc.shutdown(0,false); // Turn matrix on, no power saving
+  lc.setIntensity(0,4); // Set brightness to a medium value
+  lc.clearDisplay(0); // Clear the display
+
+  Serial.begin(9600);
+  
+
+}
+
+void loop() {
+  
+ int sensorValue = analogRead(A0); //sensorValue = 0 - 1023
+
+ sensorValue = map(sensorValue, 0, 1000, 0, 7);
+
+  Serial.println(sensorValue);
+
+ lc.clearDisplay(0);
+// lc.setRow(0,sensorValue,B11011011);
+// delay(20);
+
+switch (sensorValue){
+  case 1:
+      lc.setRow(0,0, B00000000);
+      lc.setRow(0,1, B00000000);
+      lc.setRow(0,2, B00000000);
+      lc.setRow(0,3, B00000000);
+      lc.setRow(0,4, B00000000);
+      lc.setRow(0,5, B00000000);
+      lc.setRow(0,6, B00000000);
+      lc.setRow(0,7, B10000001);
+    break; 
+   case 2:
+      lc.setRow(0,0, B00000000);
+      lc.setRow(0,1, B00000000);
+      lc.setRow(0,2, B00000000);
+      lc.setRow(0,3, B00000000);
+      lc.setRow(0,4, B00000000);
+      lc.setRow(0,5, B00000000);
+      lc.setRow(0,6, B01100110);
+      lc.setRow(0,7, B00000000);
+    break; 
+    case 3:
+      lc.setRow(0,0, B00000000);
+      lc.setRow(0,1, B00000000);
+      lc.setRow(0,2, B00000000);
+      lc.setRow(0,3, B00000000);
+      lc.setRow(0,4, B00000000);
+      lc.setRow(0,5, B01100110);
+      lc.setRow(0,6, B01100110);
+      lc.setRow(0,7, B00000000);
+    break;
+    case 4:
+      lc.setRow(0,0, B00000000);
+      lc.setRow(0,1, B00000000);
+      lc.setRow(0,2, B00000000);
+      lc.setRow(0,3, B00000000);
+      lc.setRow(0,4, B01100110);
+      lc.setRow(0,5, B01100110);
+      lc.setRow(0,6, B01100110);
+      lc.setRow(0,7, B00000000);
+    break;
+    case 5:
+      lc.setRow(0,0, B00000000);
+      lc.setRow(0,1, B00000000);
+      lc.setRow(0,2, B00000000);
+      lc.setRow(0,3, B00100100);
+      lc.setRow(0,4, B01100110);
+      lc.setRow(0,5, B01100110);
+      lc.setRow(0,6, B01100110);
+      lc.setRow(0,7, B00000000);
+    break;    
+    case 6:
+      lc.setRow(0,0, B00000000);
+      lc.setRow(0,1, B00000000);
+      lc.setRow(0,2, B01000010);
+      lc.setRow(0,3, B00000000);
+      lc.setRow(0,4, B01100110);
+      lc.setRow(0,5, B01100110);
+      lc.setRow(0,6, B01100110);
+      lc.setRow(0,7, B00000000);
+    break;    
+    case 7:
+      lc.setRow(0,0, B00000000);
+      lc.setRow(0,1, B00111100);
+      lc.setRow(0,2, B01000010);
+      lc.setRow(0,3, B00000000);
+      lc.setRow(0,4, B01100110);
+      lc.setRow(0,5, B01100110);
+      lc.setRow(0,6, B01100110);
+      lc.setRow(0,7, B00000000);
+    break;
+    default:
+      lc.setRow(0,0, B00000000);
+      lc.setRow(0,1, B00000000);
+      lc.setRow(0,2, B00000000);
+      lc.setRow(0,3, B00000000);
+      lc.setRow(0,4, B00000000);
+      lc.setRow(0,5, B00000000);
+      lc.setRow(0,6, B00000000);
+      lc.setRow(0,7, B00000000);
+    break; 
+    delay(20);       
+  }
+ 
+
+}
