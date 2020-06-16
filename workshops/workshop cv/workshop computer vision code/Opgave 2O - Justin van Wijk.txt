@@ -1,0 +1,17 @@
+// Opgave 2O - Justin van Wijk
+
+int diameter = 10;
+
+void setup() {
+ size(400,400);
+ background (200,200,200);
+ frameRate(15);
+}
+
+void draw() {
+ 
+ rect(mouseX, mouseY, 100, 100);
+ fill(random(255), random(255), random(255));
+ 
+}
+

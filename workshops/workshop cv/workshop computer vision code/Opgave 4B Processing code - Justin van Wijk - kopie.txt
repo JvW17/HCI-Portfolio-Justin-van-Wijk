@@ -1,0 +1,57 @@
+// Opgave 4B Processing code - Justin van Wijk
+
+import processing.serial.*;
+
+Serial myPort; // Create object from Serial class
+int val; // Data received from the serial port
+
+int diameter = 10;
+
+
+void setup()
+{
+size(400, 400);
+
+ String portName = Serial.list()[2]; //adjust 0 to the port your Arduino
+//is connected to
+ myPort = new Serial(this, portName, 9600);
+}
+
+void draw() {
+ background(255);
+ 
+ if (mouseOverRect() == true) { // If mouse is over square,
+   fill(255, 134, 153); // change color and
+   ellipse(width/2, height/2, diameter, diameter);
+   diameter++;
+   
+   fill(121, 91, 198);
+   ellipse(100, 100, 75, 75);
+   
+   fill(121, 91, 198);
+   ellipse(100, 300, 75, 75);
+   
+   fill(121, 91, 198);
+   ellipse(300, 100, 75, 75);
+   
+   fill(121, 91, 198);
+   ellipse(300, 300, 75, 75);
+   
+   myPort.write('H'); // send an H to indicate mouse is over square
+ }
+ 
+ else { // If mouse is not over square,
+   fill(0); // change color and
+   myPort.write('L'); // send an L otherwise
+ }
+ 
+ ellipse(200, 200, 100, 100); // Draw a square
+ 
+}
+
+boolean mouseOverRect() { // Test if mouse is over square
+ return ((mouseX >= 150) && (mouseX <= 250) && (mouseY >= 150) && (mouseY
+<= 250));
+
+}
+

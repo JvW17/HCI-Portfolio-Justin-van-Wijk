@@ -1,0 +1,36 @@
+// Opgave 4B Arduino code - Justin van Wijk
+
+// Read data from the serial and turn ON or OFF a light depending on the value
+
+char val; // Data received from the serial port
+int greenLedPin = 13; // Set the pin to digital I/O 4
+int redLedPin = 12;
+
+void setup() {
+  pinMode(greenLedPin, OUTPUT); // Set pin as OUTPUT
+  pinMode(redLedPin, OUTPUT);
+  Serial.begin(9600); // Start serial communication at 9600 bps
+}
+
+void loop() {
+        while (Serial.available()) { // If data is available to read,
+        val = Serial.read(); // read it and store it in val
+      }
+    
+      if (val == 'H') { // If H was received
+        digitalWrite(greenLedPin, HIGH); // turn the LED on
+        delay(100);
+        digitalWrite(greenLedPin, LOW);
+        delay(100);
+
+        digitalWrite(redLedPin, LOW);
+      }
+      
+      else {
+        digitalWrite(greenLedPin, LOW); // Otherwise turn it OFF
+        digitalWrite(redLedPin, HIGH);
+      }
+      
+      delay(100); // Wait 100 milliseconds for next reading
+}
+

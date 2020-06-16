@@ -1,0 +1,29 @@
+// Opgave 2F - Justin van Wijk
+
+void setup(){
+ size(400,400);
+ 
+ ellipseMode(CORNER);
+ noStroke();
+ fill(255,0,255);
+ ellipse(150, 150, 100, 100);
+ 
+ stroke(40, 255, 0);
+ fill(79, 128, 18);
+ ellipse(20, 20, 100, 300);
+ 
+ stroke(0, 255, 0);
+ fill(0,255, 255);
+ ellipse(20, 10, 100, 30);
+ 
+ stroke(18, 54, 138);
+ fill(54, 243, 194);
+ ellipse(220, 200, 75, 75);
+ 
+ noStroke();
+ fill(244, 213, 121);
+ ellipse(275, 40, 100, 120);
+}
+
+void draw(){
+}

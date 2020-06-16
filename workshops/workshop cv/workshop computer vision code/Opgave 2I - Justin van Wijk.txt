@@ -1,0 +1,27 @@
+// Opgave 2I - Justin van Wijk
+
+void setup(){
+ size(400,400);
+ 
+ strokeWeight(5);
+ stroke(18, 54, 138);
+ fill(54, 243, 194);
+ triangle(50, 200, 120, 380, 150, 300);
+ 
+ strokeWeight(10);
+ stroke(234, 43, 118);
+ fill(45, 97, 112);
+ quad(200, 30, 40, 290, 10, 180, 75, 37);
+ 
+ noStroke();
+ fill(18, 154, 222);
+ rect(280, 50, 100, 300);
+ 
+ stroke(17, 17, 239);
+ strokeWeight(5);
+ line(200, 150, 390, 390);
+}
+
+void draw(){
+}
+

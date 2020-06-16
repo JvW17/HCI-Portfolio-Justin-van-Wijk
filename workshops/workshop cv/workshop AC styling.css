@@ -1,0 +1,175 @@
+/*Fonts*/
+@import url("https://use.typekit.net/zkx6vyo.css");
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
+
+/* Algemene styling over de hele webpagina */
+	html {
+		box-sizing: border-box;
+	}
+
+	.grid-container{
+		/* min-height: calc(100vh - 158px - 112px); */
+	}
+
+	*,
+	*:before,
+	*:after{
+	  box-sizing: inherit;
+	}
+
+	body{
+	  background-color: white;
+    margin: 0;
+    margin-top: 20px;
+	}
+
+	main{
+		margin: 0 auto;
+		/* min-height: calc(100vh - 158px - 112px); */
+	}
+
+  h1, h2{
+  	font-family: poppins, sans-serif;
+  	font-weight: 600;
+  	font-style: normal;
+  	margin: 0;
+  }
+
+	h3{
+		font-family: poppins, sans-serif;
+  	font-weight: 400;
+  	font-style: normal;
+  	margin: 0;
+	}
+
+	p{
+		font-size: 17px;
+	}
+
+	a:link{
+		font-family: poppins, sans-serif;
+  	font-weight: 400;
+  	font-style: normal;
+  	margin: 0;
+		color: #3C5DFB;
+		text-decoration: none;
+	}
+
+	a:visited {
+		color: #3C5DFB;
+	}
+
+	a:hover{
+		color: #bac7ff;
+		text-decoration: underline;
+	}
+
+	.websiteLinkje{
+		color: black;
+	}
+
+	.websiteLinkje:visited{
+		color: black;
+	}
+
+	#aangepasteTweedeKop{
+		font-family: poppins, sans-serif;
+  	font-weight: 400;
+  	font-style: normal;
+  	margin: 0;
+		font-size: 26px;
+	}
+
+  h1{
+  	font-size: 60px;
+  }
+
+  h2{
+  	font-size: 26px;
+  }
+
+  h3{
+    font-size: 22px;
+  }
+
+  p{
+  	font-family: 'Open Sans', sans-serif;
+  }
+
+/* box styling */
+  .boxMetPadding{
+    padding: 20px;
+  }
+
+	/* .box2, .box4{
+		border-right: 6px solid #FC446B;
+		border-radius: 0px;
+	}
+
+	.box3{
+		border-left: 6px solid #FC446B;
+		border-radius: 0px;
+	} */
+
+	.boxblauw{
+		width: 500px;
+		height: 100px;
+	}
+
+  #footer{
+    margin-top: 3%;
+		padding: 10px;
+    padding-left: 30px;
+    border-radius: 20px 20px 0px 0px;
+		margin-bottom: 0px;
+  }
+
+  .witteTekstKleur{
+    color: white;
+  }
+
+	/* Afbeeldingen */
+	.afbeeldingMinderBreedMaken{
+		height: auto;
+		width: 100%;
+	}
+
+	.afbeeldingAanpassen{
+		height: auto;
+		width: 1100px;
+		margin: 0 auto;
+		padding-top: 25px;
+	}
+
+	/* video's */
+	.kleineVideo{
+		height: auto;
+		width: 100%;
+	}
+
+
+
+/* Styling in box1 (de header) */
+
+
+
+/* Styling in box2 */
+
+
+
+/* styling in box3 */
+
+/* styling in box4 */
+
+/* styling in box5 */
+
+/* styling in box6 */
+
+/* styling in box7 */
+
+/* styling in box8 */
+
+/* styling in box9 */
+
+/* styling in box10 */
