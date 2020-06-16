@@ -1,0 +1,114 @@
+// Eindopdracht Artificial Creatures - Justin van Wijk
+
+#include <Servo.h>
+#include "LedControl.h"
+
+Servo servo1;
+Servo servo2;
+int servoPin1 = 12;
+int servoPin2 = 13;
+int pos = 0; 
+
+LedControl lc = LedControl(11,10,9,1);
+
+const int echoPin = 6;
+const int trigPin = 7;
+
+void setup() {
+  pinMode(echoPin, INPUT);
+  pinMode(trigPin, OUTPUT);
+
+  servo1.attach(servoPin1);
+  servo2.attach(servoPin2);
+  
+  Serial.begin(9600);
+
+  lc.shutdown(0,false);
+  lc.setIntensity(0,4);
+  lc.clearDisplay(0); 
+}
+
+void loop() {
+  // send a pulse
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(5);
+  digitalWrite(trigPin, LOW);
+  
+  // wait for the echo
+  long duration = pulseIn(echoPin, HIGH);
+  
+  // convert the time into a distance, the speed of sound is 29 microseconds per centimeter,
+  //the pulse traveled forth and back, so we divided the distance by 2
+  int cm = duration / 29 / 2;
+  
+  Serial.print(cm);
+  Serial.println("cm");
+
+  if(cm<150){
+    lc.setRow(0,0,B00000000);
+    lc.setRow(0,1,B01110100);
+    lc.setRow(0,2,B01110010);
+    lc.setRow(0,3,B00000010);
+    lc.setRow(0,4,B00000010);
+    lc.setRow(0,5,B01110010);
+    lc.setRow(0,6,B01110100);
+    lc.setRow(0,7,B00000000);
+    delay(1000);
+
+    servo1.write(0);
+    servo2.write(0);
+
+//    for(pos = 180; pos >= 0; pos += 1){
+//        servo1.write(pos);
+//        delay(15);
+//    }
+    
+  }
+  
+  else if(cm>150 && cm<300){
+     lc.setRow(0,0,B00000000);
+     lc.setRow(0,1,B01110000);
+     lc.setRow(0,2,B01110010);
+     lc.setRow(0,3,B00000010);
+     lc.setRow(0,4,B00000010);
+     lc.setRow(0,5,B01110010);
+     lc.setRow(0,6,B01110000);
+     lc.setRow(0,7,B00000000);
+
+     servo2.write(180);
+     
+//    for(pos = 180; pos >= 1; pos -= 1){
+//        servo2.write(pos);
+//        delay(15);
+//    }
+  }
+
+  else{
+     lc.setRow(0,0,B00000000);
+     lc.setRow(0,1,B01110010);
+     lc.setRow(0,2,B01110100);
+     lc.setRow(0,3,B00000100);
+     lc.setRow(0,4,B00000100);
+     lc.setRow(0,5,B01110100);
+     lc.setRow(0,6,B01110010);
+     lc.setRow(0,7,B00000000);
+
+     servo2.write(180);
+     
+    for(pos = 0; pos <= 180; pos += 1){
+        servo2.write(pos);
+        delay(15);
+    }
+    
+
+//    for(pos = 0; pos <= 180; pos += 1){
+//        servo2.write(pos);
+//        delay(15);
+//    }
+    
+   }
+  
+  delay(100);
+}
