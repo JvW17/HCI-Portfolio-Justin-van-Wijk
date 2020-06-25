@@ -1,0 +1,85 @@
+// Tinkering Artificial Creatures demo 3 - Justin van Wijk
+
+#include <Servo.h>
+
+Servo servo1;
+Servo servo2;
+int servoPin1 = 9;
+int servoPin2 = 8;
+int pos = 0; 
+
+int greenLedPin = 13;
+int yellowLedPin = 12;
+int redLedPin = 11;
+
+const int echoPin = 6;
+const int trigPin = 7;
+
+void setup() {
+  pinMode(echoPin, INPUT);
+  pinMode(trigPin, OUTPUT);
+  pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+
+  servo1.attach(servoPin1);
+  servo2.attach(servoPin2);
+  
+  Serial.begin(9600);
+}
+
+void loop() {
+  // send a pulse
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(5);
+  digitalWrite(trigPin, LOW);
+  
+  // wait for the echo
+  long duration = pulseIn(echoPin, HIGH);
+  
+  // convert the time into a distance, the speed of sound is 29 microseconds per centimeter,
+  //the pulse traveled forth and back, so we divided the distance by 2
+  int cm = duration / 29 / 2;
+  
+  Serial.print(cm);
+  Serial.println("cm");
+
+  //if the measured distance is lower than 50 cm, turn on LED
+  if(cm<25){
+    for(pos = 0; pos <= 90; pos += 1){
+        servo1.write(pos);
+        servo2.write(pos);
+        delay(15);
+    }
+
+    digitalWrite(13, HIGH); 
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(150); 
+  
+    digitalWrite(12, HIGH);
+    delay(1000); 
+    digitalWrite(12, LOW);
+    delay(300); 
+
+    digitalWrite(11, LOW);
+    delay(300); 
+  }
+  
+  //else turn off LED
+  else{
+    for(pos = 0; pos >= 0; pos -= 1){
+      servo1.write(pos);
+      servo2.write(pos);
+      delay(15);
+    }
+
+    digitalWrite(13, LOW);
+    digitalWrite(12, LOW);
+    digitalWrite(11, HIGH);
+  }
+  
+  delay(100);
+}
