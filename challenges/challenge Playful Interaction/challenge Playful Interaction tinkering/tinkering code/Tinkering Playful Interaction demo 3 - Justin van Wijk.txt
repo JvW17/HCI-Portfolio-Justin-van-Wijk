@@ -1,0 +1,43 @@
+// Tinkering Playful Interaction demo 3 - Justin van Wijk
+
+int speakerPin = 8;
+int buttonPin1 = 4;
+int buttonPin2 = 3;
+int buttonPin3 = 2;
+
+void setup() {
+ pinMode(speakerPin, OUTPUT);
+ pinMode(buttonPin1, INPUT);
+ pinMode(buttonPin2, INPUT);
+ pinMode(buttonPin3, INPUT);
+}
+
+void loop(){
+  
+  if (digitalRead(buttonPin1) == HIGH) {
+    tone(speakerPin, 500, 200);
+    delay(200);
+    tone(speakerPin, 1500, 400);
+    delay(200);
+    tone(speakerPin, 1000, 600);
+    delay(200);
+    tone(speakerPin, 100, 600);
+    delay(200);
+  } else if(digitalRead(buttonPin2) == HIGH) {
+    tone(speakerPin, 100, 200);
+    delay(200);
+    tone(speakerPin, 500, 200);
+    delay(200);
+    tone(speakerPin, 1000, 200);
+    delay(200);
+  } else if(digitalRead(buttonPin3) == HIGH) {
+    tone(speakerPin, 1500, 200);
+    delay(200);
+    tone(speakerPin, 2000, 200);
+    delay(200);
+    tone(speakerPin, 3000, 200);
+    delay(200);
+  } else {
+    noTone(8); 
+  }
+}

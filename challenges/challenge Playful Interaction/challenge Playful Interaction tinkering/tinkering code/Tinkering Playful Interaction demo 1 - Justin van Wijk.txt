@@ -1,0 +1,70 @@
+// Tinkering Playful Interaction demo 1 - Justin van Wijk
+
+#include "LedControl.h"
+
+int pirPin1 = 12;
+int pirPin2 = 10;
+int pirValue;
+byte pirState;
+int yellowLedPin = 13;
+int state = LOW;
+int val = 0;
+
+int lowerLimit = 200;
+int UpperLimit = 2000;
+int speed = 1000;
+
+int speakerPin = 8;
+
+void setup() {
+  
+ pinMode(yellowLedPin, OUTPUT);
+ pinMode(pirPin1, INPUT);
+ pinMode(pirPin2, INPUT);
+ digitalWrite(yellowLedPin, LOW);
+ 
+ pinMode(speakerPin, OUTPUT);
+
+ Serial.begin(9600);
+ 
+}
+
+void loop() {
+  pirState = digitalRead(pirPin1) + digitalRead(pirPin2);
+  if (pirState == HIGH){
+
+for(int i=lowerLimit; i<UpperLimit; i+=speed){
+        tone(speakerPin, i);
+        delay(20);
+       }
+      
+       for(int i=UpperLimit; i>lowerLimit; i-=speed){
+        tone(speakerPin, i);
+        delay(20);
+       }
+
+    if(state == LOW){
+      Serial.println("Motion detected!");
+      state = HIGH;
+    }
+
+  }
+  
+  else{
+    digitalWrite(yellowLedPin, HIGH);
+        delay(50); 
+        digitalWrite(yellowLedPin, LOW);
+        delay(50);
+
+    if (state == HIGH){
+      Serial.println("Motion stopped");
+      state = LOW;
+
+      tone(speakerPin, 0);
+        
+
+    }
+  
+  }
+   
+}

@@ -1,0 +1,103 @@
+// Eindopdracht Playful Interaction Arduino code - Justin van Wijk
+
+#include <Servo.h> 
+char val;
+
+const int echoPin = 6;
+const int trigPin = 7;
+
+int pirPin1 = 12;
+int pirValue;
+byte pirState;
+
+int greenLedPin1 = 3;
+int greenLedPin2 = 11;
+int yellowLedPin = 8;
+int state = LOW;
+
+Servo myServo;
+int servoPin = 9;
+int pos = 0;
+
+int speakerPin = 5;
+
+void setup() {
+  pinMode(echoPin, INPUT);
+  pinMode(trigPin, OUTPUT);
+    
+  pinMode(greenLedPin1, OUTPUT);
+  pinMode(greenLedPin2, OUTPUT);
+  pinMode(yellowLedPin, OUTPUT);
+  pinMode(pirPin1, INPUT);
+  digitalWrite(greenLedPin1, LOW);
+  digitalWrite(greenLedPin2, LOW);
+  Serial.begin(9600);
+
+  pinMode(speakerPin, OUTPUT);
+
+  myServo.attach(servoPin);
+ 
+}
+
+void loop() {
+  digitalWrite(3, HIGH); 
+  digitalWrite(11, HIGH);
+  
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(5);
+  digitalWrite(trigPin, LOW);
+
+  long duration = pulseIn(echoPin, HIGH);
+  int cm = duration / 29 / 2;
+  Serial.print(cm);
+  Serial.println("cm");
+  delay(100);
+  
+  while (Serial.available())
+  val = Serial.read();
+  
+  pirState = digitalRead(pirPin1);
+  if (val == 'H') {
+      myServo.write(0);
+      digitalWrite(8, HIGH);
+  }
+    
+  else if (pirState == HIGH){
+    tone(speakerPin, 1500, 200);
+    delay(200);
+    tone(speakerPin, 2000, 200);
+    delay(200);
+    tone(speakerPin, 3000, 200);
+    delay(200);
+
+    if(state == LOW){
+      state = HIGH;
+    }
+
+  }
+  
+  else if(cm>1200){
+   tone(speakerPin, 300, 200);
+   delay(250);
+   tone(speakerPin, 100, 200);
+   delay(250);
+   tone(speakerPin, 300, 200);
+   delay(250);
+   tone(speakerPin, 200, 200);
+   delay(500);  
+  }
+
+    else{
+    myServo.write(180);
+    digitalWrite(8, LOW);
+    
+    if (state == HIGH){
+      state = LOW;      
+      noTone(5);
+    }
+  
+  }
+   
+}

@@ -1,0 +1,11 @@
+// Tinkering Playful Interaction demo 2 - Justin van Wijk
+
+void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(LED_BUILTIN, HIGH);
+}
+
+// Heel simpel, ik weet het... XD
